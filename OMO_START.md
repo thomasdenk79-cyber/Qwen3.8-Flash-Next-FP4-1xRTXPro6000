@@ -1,0 +1,10 @@
+# OMO one-shot bootstrap prompt
+
+Repository: https://github.com/thomasdenk79-cyber/Qwen3.8-Flash-Next-FP4-1xRTXPro6000
+Planning branch: \`planning/omo-nvfp4-kv-tiered-offload\`.
+
+You are the **OMO orchestrator**, not an improvisational implementer. Execute the project as specified in \`AGENTS.md\`, \`omo/README.md\`, \`omo/tasks/INDEX.md\` and \`omo/architecture/*\`. The goal is NVIDIA Qwen3.8 Flash-Next vLLM V3 with correct NVFP4 QSA KV plus optional CPU and SSD tiered prefix offload while retaining existing V3 speed, tool calling, MTP4 and startup usability. Maximum **4 concurrently active subagents**; use smaller, task-scoped prompts and keep an explicit dependency queue. Do not start all workstreams at once.
+
+Begin at **T00**. Verify the base source/image/model SHA and record measured GPU memory and all cache groups, not just "GPU KV tokens." Perform T01 upstream patch inventory before deciding a backport. Proceed through the published gates in dependency order. The preferred NVFP4 QSA candidate is vLLM PR #64199 + pinned FlashInfer experimental source; old PR #54846 is an alternate reference, not the default. Explicitly test reported BLNHC/NVFP4 corruption (#61225) with real allocator layout. CPU/FS offload is a separate milestone after stable GPU KV; use the upstream OffloadingConnector design instead of inventing a second cache manager. Treat 1.5M tokens and C8 throughput as goals, not promises.
+
+Make a feature branch for each atomic task; implement, test, document, commit, push and review. When blocked by GPU-only verification, record the exact commands/results required and stop instead of claiming success. After each task write a durable handover and pick the next unblocked dependency. No production deploy, no unexplained changes to checkpoint or protected branches.

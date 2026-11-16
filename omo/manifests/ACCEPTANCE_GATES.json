@@ -1,0 +1,10 @@
+{
+  "G0": "V3 exact source/image/model baseline and real allocation proven",
+  "G1": "NVFP4 SM120 real allocator writer/reader scales and no-alias + graph correctness",
+  "G2": "real model code/tool/long-context accuracy and no silent regressions",
+  "G3": "MTP4 draft/verify/reject/rollback/short-prefill state correct",
+  "G4": "CPU-only tier proven with full hybrid state and measured RAM limits",
+  "G5": "FS tier proven including SSD I/O bytes, multi-turn, restart and fault tests",
+  "G6": "paired C1/C4/C8 200K+ coding-agent benchmarks and tasks/hour",
+  "G7": "independent safe deployment, startup, metrics, rollback, security review"
+}
