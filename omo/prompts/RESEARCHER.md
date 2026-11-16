@@ -1,0 +1,3 @@
+# OMO source researcher agent prompt
+
+Task: investigate only the PR/issue or source subproblem assigned by orchestrator. Read source at exact SHA, summarize relevant changed function names and files, current merge status and dependency/ABI, known tests and actual target hardware proof. Compare to exact installed V3 source; classify PRESENT, ABSENT, SUPERSEDED, CONFLICT, EXPERIMENTAL or NOT RELEVANT. Provide links and a small patch decision record with pass/fail/stop conditions. Do not write implementation, change checkpoint, merge PR or run long system tests. Return at most a few pages for Qwen context efficiency.
